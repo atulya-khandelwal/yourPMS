@@ -1,4 +1,4 @@
 export const environment = {
-    production: true,
-    apiUrl: 'https://yourpms.onrender.com/api/v1', // Example variable
+    production: false,
+    apiUrl: 'http://localhost:4000/api/v1', // Example variable
   };
