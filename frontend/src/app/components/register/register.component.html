@@ -70,6 +70,9 @@
                     <div data-mdb-input-init class="form-outline">
                       <input type="text" id="form3Example2" class="form-control" formControlName="name"/>
                       <label class="form-label" for="form3Example2">Full Name</label>
+                      <div *ngIf="name?.touched && name?.invalid" class="text-danger">
+                        <small *ngIf="name?.errors?.['required']">Name is required.</small>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -78,12 +81,29 @@
                 <div data-mdb-input-init class="form-outline mb-4">
                   <input type="email" id="form3Example3" class="form-control" formControlName="email" />
                   <label class="form-label" for="form3Example3">Email address</label>
+                  <div *ngIf="email?.touched && email?.invalid" class="text-danger">
+                    <small *ngIf="email?.errors?.['required']">Email is required.</small>
+                    <small *ngIf="email?.errors?.['email']">Email is not valid.</small>
+                  </div>
                 </div>
   
                 <!-- Password input -->
                 <div data-mdb-input-init class="form-outline mb-4">
                   <input type="password" id="form3Example4" class="form-control" formControlName="password" />
                   <label class="form-label" for="form3Example4">Password</label>
+                  <div *ngIf="password?.touched && password?.invalid" class="text-danger">
+                    <small *ngIf="password?.errors?.['required']">Password is required.</small>
+                    <small *ngIf="password?.errors?.['minlength']">
+                      Password must be at least 8 characters.
+                    </small>
+                    <small *ngIf="password?.errors?.['maxlength']">
+                      Password must be less than 100 characters.
+                    </small>
+                    <small *ngIf="password?.errors?.['pattern']">
+                      Password must contain at least:
+                      1 uppercase, 1 lowercase, 1 number, and 1 special character.
+                    </small>
+                  </div>
                 </div>
                 <!-- Submit button -->
                 <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">

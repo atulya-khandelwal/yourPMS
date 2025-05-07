@@ -10,11 +10,25 @@
           <div class="form-outline mb-4">
             <input type="email" class="form-control form-control-lg" formControlName="email" />
             <label class="form-label">Email address</label>
+            <small class="text-danger" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required']">
+              Email is required.
+            </small>
+            <small class="text-danger" *ngIf="loginForm.get('email')?.errors?.['email']">
+              Invalid email format.
+            </small>
           </div>
+
 
           <div class="form-outline mb-4">
             <input type="password" class="form-control form-control-lg" formControlName="password" />
             <label class="form-label">Password</label>
+            <small class="text-danger" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']">
+              Password is required.
+            </small>
+          </div>
+
+          <div *ngIf="errorMessage" class="text-danger mt-2">
+            {{ errorMessage }}
           </div>
 
           <div class="d-flex justify-content-around align-items-center mb-4">

@@ -6,16 +6,17 @@ import { HttpClient,HttpClientModule  } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { environment } from '../../../environments/environment';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, RouterLink],
+  imports: [ReactiveFormsModule, HttpClientModule, JsonPipe, RouterLink, CommonModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-
+  submitted = false;
   constructor(
     private http: HttpClient,
     private auth: AuthService,
@@ -25,8 +26,23 @@ export class RegisterComponent {
   registerForm: FormGroup = new FormGroup({
     name: new FormControl("", [Validators.required, Validators.minLength(1)]),
     email: new FormControl("", [Validators.required, Validators.minLength(1), Validators.email]),
-    password: new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(100)]),
+    password: new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(100),  Validators.pattern(
+      '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=\\[\\]{};:"\\\\|,.<>\\/?]).{8,}$'
+    )]),
   });
+
+  get name() {
+    return this.registerForm.get('name');
+  }
+
+  get email() {
+    return this.registerForm.get('email');
+  }
+
+  get password() {
+    return this.registerForm.get('password');
+  }
+
 
   formValue: any
 
@@ -56,6 +72,7 @@ export class RegisterComponent {
       });
     } else {
       console.log('Form is invalid');
+      this.registerForm.markAllAsTouched();
     }
   }
 
