@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'http://localhost:4000/api/v1', // Example variable
+    apiUrl: 'https://your-pms-backend.vercel.app/api/v1',
 };
