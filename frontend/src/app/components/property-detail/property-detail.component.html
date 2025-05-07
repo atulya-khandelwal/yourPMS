@@ -1,0 +1,25 @@
+<div *ngIf="loading">Loading property details...</div>
+<div *ngIf="error">{{ error }}</div>
+
+<div *ngIf="property && !loading">
+  <h2>{{ property.name }}</h2>
+  <p><strong>Address:</strong> {{ property.address }}</p>
+
+  <button (click)="fetchPropertyDetails()">🔄 Refresh</button>
+
+  <div *ngFor="let floor of property.floors" class="floor-card">
+    <h3>Floor {{ floor.floor_number }}</h3>
+    <button (click)="addUnit(floor.id)">➕ Add Unit</button>
+
+    <div class="unit-grid">
+      <div *ngFor="let unit of floor.units" class="unit-card">
+        <p><strong>Unit:</strong> {{floor.floor_number}}0{{ unit.unit_number }}</p>
+        <p><strong>Status:</strong> {{ unit.status }}</p>
+        <button 
+          (click)="bookUnit(unit.id)">
+          {{ unit.status === 'available' ? 'Book' : 'Make Available' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

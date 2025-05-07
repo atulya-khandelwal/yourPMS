@@ -1,0 +1,22 @@
+.floor-card {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .unit-grid {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  
+  .unit-card {
+    border: 1px solid #999;
+    padding: 10px;
+    width: 120px;
+    border-radius: 6px;
+    background-color: #f8f8f8;
+  }
+  

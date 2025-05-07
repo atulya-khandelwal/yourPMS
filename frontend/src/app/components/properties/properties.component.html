@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
+  <span class="navbar-brand">My Properties</span>
+  <button class="btn btn-outline-danger ms-auto" (click)="logout()">Logout</button>
+</nav>
+
+<div class="container mt-4">
+  <h2>Your Properties</h2>
+  <button class="btn btn-primary mb-3" (click)="addProperty()">Add Property</button>
+
+  <div *ngIf="loading" class="text-center">
+    <p>Loading Properties...</p>
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && properties.length === 0" class="text-center">
+    <p>No Properties Available</p>
+  </div>
+
+  @if(!loading && properties.length > 0) {
+    <div class="alert alert-info" role="alert">
+      You have {{ properties.length }} properties.
+    </div>
+  
+  @for (property of properties; track property.id) {
+    <div class="card mb-3 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title"><strong>Property Name:</strong>{{ property.name }}</h5>
+        <p class="card-text"><strong>Address:</strong> {{ property.address }}</p>
+        <p class="card-text"><strong>Property Number:</strong> {{ property.property_number }}</p>
+        <button class="btn btn-info me-2" (click)="seeDetails(property.id)">See Details</button>
+        <button class="btn btn-success" (click)="addFloor(property.id)">Add Floor</button>
+        <button class="btn btn-primary ms-2" (click)="seeAvailableUnits(property.id)">See Available Units</button>
+
+      </div>
+    </div>
+  }}
+</div>
