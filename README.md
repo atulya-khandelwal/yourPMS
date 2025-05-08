@@ -147,16 +147,15 @@ CREATE TABLE IF NOT EXISTS units (
 ## 🔐 Security Features
 - JWT-based authentication system with access and refresh tokens
 - Passwords hashed using bcrypt
-- Role-based access control (Admin/Manager/User)
 - Validation middleware for request data
 
 
 ## 🛠️ Tech Stack
 - **Backend**: Node.js, Express
-- **Frontend**: React, Redux (or Context API)
+- **Frontend**: Angular 19
 - **Database**: PostgreSQL
 - **Authentication**: JWT
 - **Validation**: Zod
 
 ## 🧑‍💻 Author
-Maintained by [Atulya]
+Maintained by Atulya
