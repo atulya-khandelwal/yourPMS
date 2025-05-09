@@ -34,8 +34,6 @@ const addProperty = async (req: Request, res: Response): Promise<any> => {
         const query = 'INSERT INTO properties (name, address, user_id, property_number) VALUES ($1, $2, $3, $4) RETURNING *'
         const values = [name, address, user_id, nextPropertyNumber];
         const result = await db.query(query, values);
-
-        console.log('Property added:', result.rows[0]);
         
         const propertyId = result.rows[0].id;
         return res.status(StatusCodes.CREATED).json({
