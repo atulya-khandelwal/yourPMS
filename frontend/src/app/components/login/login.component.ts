@@ -36,7 +36,7 @@ export class LoginComponent {
             localStorage.setItem('access_token', response.accessToken);
             localStorage.setItem('refresh_token', response.refreshToken);
             console.log('Login successful, tokens stored');
-            this.router.navigate(['/dashboard']); // or wherever
+            this.router.navigate(['/properties']); 
           } else {
             this.errorMessage = 'Login succeeded but token(s) missing.';
           }
