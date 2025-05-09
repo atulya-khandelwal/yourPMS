@@ -5,7 +5,7 @@ import apiRoutes from './routes'
 
 const app = express();
 
-const allowedOrigins = ['http://localhost:4200'];
+const allowedOrigins = ['https://your-pms.netlify.app'];
 
 // CORS options
 const corsOptions = {
