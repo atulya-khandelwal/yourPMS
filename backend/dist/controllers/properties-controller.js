@@ -34,7 +34,6 @@ const addProperty = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         const query = 'INSERT INTO properties (name, address, user_id, property_number) VALUES ($1, $2, $3, $4) RETURNING *';
         const values = [name, address, user_id, nextPropertyNumber];
         const result = yield db_1.default.query(query, values);
-        console.log('Property added:', result.rows[0]);
         const propertyId = result.rows[0].id;
         return res.status(http_status_codes_1.StatusCodes.CREATED).json({
             message: 'Property created successfully',
