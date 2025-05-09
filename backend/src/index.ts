@@ -26,6 +26,10 @@ const corsOptions = {
 // Apply CORS with specific options
 app.use(cors(corsOptions));
 app.use(express.json());
+app.get('/', (req, res) => {
+  res.send('Hello from PMS Backend!')
+});
+
 app.use('/api', apiRoutes);
 
 app.listen(configs.serverConfig.PORT, () => {
