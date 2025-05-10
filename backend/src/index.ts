@@ -2,7 +2,6 @@ import express from 'express'
 import configs from './config'
 import cors from 'cors'
 import apiRoutes from './routes'
-import path from 'path';
 
 const app = express();
 
@@ -27,11 +26,8 @@ const corsOptions = {
 // Apply CORS with specific options
 app.use(cors(corsOptions));
 app.use(express.json());
-
-app.use(express.static(path.join(__dirname, '../../frontend/dist/frontend/browser')))
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../frontend/dist/frontend/browser/index.html'));
+app.get('/', (req, res) => {
+  res.send('Hello from PMS Backend!')
 });
 
 app.use('/api', apiRoutes);
